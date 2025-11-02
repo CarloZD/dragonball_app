@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# 🐉 Dragon Ball App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📝 Descripción del Proyecto
 
-## Available Scripts
+**Dragon Ball App** es una aplicación web desarrollada con **React** que tiene como objetivo principal mostrar de forma atractiva y funcional la información detallada de los personajes del legendario universo de Dragon Ball.
 
-In the project directory, you can run:
+La aplicación se enfoca en ofrecer una **interfaz moderna, responsive y fácil de usar**, obteniendo todos sus datos en tiempo real desde una API pública especializada.
 
-### `npm start`
+### Secciones Principales:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+La navegación de la aplicación se divide en tres vistas clave:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1.  **Inicio (Home):** Muestra una selección curada de **personajes destacados** del universo DBZ.
+2.  **Listado:** Una vista completa de **todos los personajes** con opciones de **búsqueda** y **paginación** para una exploración eficiente.
+3.  **Contacto:** Un formulario simple para que los usuarios puedan enviar mensajes o feedback.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💻 Tecnologías Utilizadas
 
-### `npm run build`
+El proyecto fue desarrollado utilizando el siguiente stack tecnológico:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Tecnología | Categoría | Propósito Principal |
+| :--- | :--- | :--- |
+| **React** (Vite) | Framework UI | Construcción de la interfaz de usuario. |
+| **Axios** | Cliente HTTP | Consumo de la API externa (peticiones `GET`). |
+| **React Router DOM** | Librería | Manejo de la navegación y las rutas de la aplicación. |
+| **Bootstrap** | Estilos CSS | Diseño responsive y componentes estilizados. |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🌐 API Utilizada
 
-### `npm run eject`
+Todos los datos de los personajes se obtienen del siguiente servicio público:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **API Base:** `https://dragonball-api.com/api`
+* **Ejemplo de Endpoint Usado:** `https://dragonball-api.com/api/characters`
