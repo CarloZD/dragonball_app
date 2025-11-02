@@ -1,59 +1,76 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 const HomePage = () => {
   const [characters, setCharacters] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // URL base de la API pública de Dragon Ball
+  const API_URL = "https://dragonball-api.com/api/characters?limit=9";
 
   useEffect(() => {
-    // Cambia esta URL si tu backend usa otro puerto o endpoint
-    fetch("https://dragonball-api.com/api/characters?limit=12")
-      .then((response) => response.json())
-      .then((data) => {
-        setCharacters(data.items || data); // Ajuste por si el JSON tiene .items
-      })
-      .catch((error) => console.error("Error al obtener personajes:", error));
+    const fetchCharacters = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setCharacters(response.data.items || []); // algunos endpoints usan .items
+      } catch (error) {
+        console.error("Error al obtener los personajes:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCharacters();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-warning" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="container py-5">
-      <h1 className="text-center mb-4 fw-bold text-primary">
+    <div className="container my-5">
+      <h1 className="text-center mb-4 text-warning fw-bold">
         Personajes de Dragon Ball
       </h1>
 
-      <div className="row g-4">
-        {characters.length > 0 ? (
-          characters.map((char) => (
-            <div key={char.id} className="col-sm-6 col-md-4 col-lg-3">
-              <div className="card shadow-sm border-0 h-100">
-                <img
-                  src={char.image}
-                  alt={char.name}
-                  className="card-img-top"
-                  style={{
-                    height: "220px",
-                    objectFit: "cover",
-                    borderTopLeftRadius: "0.5rem",
-                    borderTopRightRadius: "0.5rem",
-                  }}
-                />
-                <div className="card-body text-center">
-                  <h5 className="card-title fw-bold text-dark">
-                    {char.name}
-                  </h5>
-                  <p className="text-muted mb-2">{char.race || "Desconocido"}</p>
-                  <p className="text-muted small mb-0">
-                    {char.originPlanet || "Planeta desconocido"}
-                  </p>
-                </div>
+      <div className="row justify-content-center g-4">
+        {characters.map((character) => (
+          <div className="col-12 col-md-6 col-lg-4" key={character.id}>
+            <div className="card shadow-lg border-0 rounded-4 overflow-hidden">
+              <img
+                src={character.image}
+                alt={character.name}
+                className="card-img-top"
+                style={{
+                  height: "400px",
+                  objectFit: "cover",
+                  width: "100%",
+                }}
+              />
+              <div className="card-body text-center bg-light">
+                <h4 className="card-title text-dark fw-bold mb-2">
+                  {character.name}
+                </h4>
+                <p className="card-text text-secondary mb-1">
+                  <strong>Raza:</strong> {character.race || "Desconocida"}
+                </p>
+                <p className="card-text text-secondary mb-2">
+                  <strong>Planeta:</strong>{" "}
+                  {character.originPlanet?.name || "Desconocido"}
+                </p>
+                <button className="btn btn-warning btn-sm">
+                  Ver más detalles
+                </button>
               </div>
             </div>
-          ))
-        ) : (
-          <div className="text-center text-muted">
-            <div className="spinner-border text-primary" role="status"></div>
-            <p className="mt-3">Cargando personajes...</p>
           </div>
-        )}
+        ))}
       </div>
     </div>
   );
