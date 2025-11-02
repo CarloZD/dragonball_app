@@ -14,7 +14,6 @@ const Pagination = ({ page, totalPages, setPage, limit, setLimit }) => {
     setPage(1);
   };
 
-  // 🔹 Genera una lista corta de páginas visibles
   const getPageNumbers = () => {
     const pages = [];
     const start = Math.max(1, page - 2);
@@ -24,12 +23,12 @@ const Pagination = ({ page, totalPages, setPage, limit, setLimit }) => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between mt-6 gap-3">
-      <div className="flex items-center gap-2">
+    <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 gap-3">
+      <div className="d-flex gap-2 align-items-center">
         <button
           onClick={handlePrev}
           disabled={page === 1}
-          className="px-3 py-1 bg-gray-200 rounded-lg disabled:opacity-50"
+          className="btn btn-outline-primary"
         >
           ← Anterior
         </button>
@@ -38,10 +37,8 @@ const Pagination = ({ page, totalPages, setPage, limit, setLimit }) => {
           <button
             key={num}
             onClick={() => setPage(num)}
-            className={`px-3 py-1 rounded-lg ${
-              num === page
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 hover:bg-gray-300"
+            className={`btn ${
+              num === page ? "btn-primary" : "btn-outline-secondary"
             }`}
           >
             {num}
@@ -51,21 +48,22 @@ const Pagination = ({ page, totalPages, setPage, limit, setLimit }) => {
         <button
           onClick={handleNext}
           disabled={page === totalPages}
-          className="px-3 py-1 bg-gray-200 rounded-lg disabled:opacity-50"
+          className="btn btn-outline-primary"
         >
           Siguiente →
         </button>
       </div>
 
-      <div className="flex items-center gap-2">
-        <label htmlFor="limit" className="text-sm text-gray-700">
+      <div className="d-flex align-items-center gap-2">
+        <label htmlFor="limit" className="mb-0">
           Items por página:
         </label>
         <select
           id="limit"
           value={limit}
           onChange={handleLimitChange}
-          className="border rounded-lg px-2 py-1"
+          className="form-select"
+          style={{ width: "auto" }}
         >
           <option value={10}>10</option>
           <option value={20}>20</option>
@@ -73,7 +71,7 @@ const Pagination = ({ page, totalPages, setPage, limit, setLimit }) => {
         </select>
       </div>
 
-      <p className="text-sm text-gray-600">
+      <p className="mb-0 text-muted">
         Página {page} de {totalPages}
       </p>
     </div>

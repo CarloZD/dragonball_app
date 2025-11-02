@@ -2,20 +2,33 @@ import React from "react";
 
 const EntityCard = ({ entity }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden transition">
-      <img
-        src={entity.image}
-        alt={entity.name}
-        className="w-full h-56 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-1">{entity.name}</h3>
-        <p className="text-sm text-gray-600">
+    <div className="card h-100 shadow-sm">
+      <div style={{ height: "300px", overflow: "hidden", backgroundColor: "#f8f9fa" }}>
+        <img
+          src={entity.image}
+          alt={entity.name}
+          className="card-img-top"
+          style={{ 
+            height: "100%", 
+            width: "100%",
+            objectFit: "contain",
+            objectPosition: "center"
+          }}
+        />
+      </div>
+      <div className="card-body">
+        <h5 className="card-title fw-bold">{entity.name}</h5>
+        <p className="card-text mb-1">
           <strong>Raza:</strong> {entity.race || "Desconocida"}
         </p>
-        <p className="text-sm text-gray-600">
+        <p className="card-text mb-1">
           <strong>Ki:</strong> {entity.ki || "No disponible"}
         </p>
+        {entity.affiliation && (
+          <p className="card-text">
+            <strong>Afiliación:</strong> {entity.affiliation}
+          </p>
+        )}
       </div>
     </div>
   );

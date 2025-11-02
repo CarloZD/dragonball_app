@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="container">
         {/* Logo o título */}
         <Link className="navbar-brand fw-bold text-warning" to="/">
-          🐉 Dragon Ball App
+           Dragon Ball App
         </Link>
 
         {/* Botón responsive */}

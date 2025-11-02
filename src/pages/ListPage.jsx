@@ -23,7 +23,7 @@ const ListPage = () => {
 
   return (
     <div className="container py-4">
-      <h2 className="text-2xl font-bold mb-4 text-center">Personajes de Dragon Ball</h2>
+      <h2 className="text-center mb-4 fw-bold">Personajes de Dragon Ball</h2>
 
       <FilterBar
         search={search}
@@ -34,12 +34,20 @@ const ListPage = () => {
       {loading && <LoadingSpinner />}
       {error && <ErrorAlert message={error} />}
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="row">
         {!loading &&
           entities.map((entity) => (
-            <EntityCard key={entity.id} entity={entity} />
+            <div key={entity.id} className="col-sm-6 col-md-4 col-lg-3 mb-4">
+              <EntityCard entity={entity} />
+            </div>
           ))}
       </div>
+
+      {!loading && entities.length === 0 && (
+        <div className="alert alert-info text-center">
+          No se encontraron personajes.
+        </div>
+      )}
 
       <Pagination
         page={page}

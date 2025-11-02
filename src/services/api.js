@@ -2,7 +2,9 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://dragonball-api.com/api",
-  timeout: 10000, 
+  timeout: 10000,
+});
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {

@@ -32,18 +32,20 @@ const HomePage = () => {
       <div className="row justify-content-center">
         {characters.map((char) => (
           <div key={char.id} className="col-md-4 col-lg-3 mb-4">
-            <div className="card shadow-lg border-0">
-              <img
-                src={char.image}
-                alt={char.name}
-                className="card-img-top img-fluid"
-                style={{
-                  height: "350px",
-                  objectFit: "cover",
-                  borderTopLeftRadius: "10px",
-                  borderTopRightRadius: "10px",
-                }}
-              />
+            <div className="card shadow-lg border-0 h-100">
+              <div style={{ height: "350px", overflow: "hidden", backgroundColor: "#f8f9fa" }}>
+                <img
+                  src={char.image}
+                  alt={char.name}
+                  className="card-img-top"
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    objectFit: "contain",
+                    objectPosition: "center",
+                  }}
+                />
+              </div>
               <div className="card-body text-center">
                 <h5 className="card-title fw-bold">{char.name}</h5>
                 <p className="card-text text-muted mb-1">{char.race}</p>
